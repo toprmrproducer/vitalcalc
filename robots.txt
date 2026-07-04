@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://toprmrproducer.github.io/vitalcalc/sitemap-index.xml
