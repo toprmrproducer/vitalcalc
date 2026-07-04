@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 128 128">
+    <path d="M64 20c-24 0-42 16-42 40 0 28 24 42 42 50 18-8 42-22 42-50 0-24-18-40-42-40Z" />
+    <path d="M40 68h10l6-16 10 28 8-20 5 8h9" stroke="#FAF6EC" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+    <style>
+        path:first-child { fill: #C9982E; }
+        @media (prefers-color-scheme: dark) {
+            path:first-child { fill: #C9982E; }
+        }
+    </style>
+</svg>

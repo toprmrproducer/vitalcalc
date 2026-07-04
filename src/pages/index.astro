@@ -1,0 +1,415 @@
+---
+import Layout from '../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/+$/, '') + '/';
+---
+
+<Layout
+	title="VitalCalc — Free BMI Calculator with WHO Category & Visual Gauge"
+	description="Free BMI calculator with metric and imperial units. Instantly get your Body Mass Index, WHO category, and a visual gauge — no signup, 100% client-side."
+	canonicalPath="/"
+>
+	<section class="text-center">
+		<h1 class="text-4xl font-semibold tracking-tight text-[#2B2013] sm:text-5xl">
+			Know your BMI.
+			<span class="block text-[#C9982E]">Instantly, for free.</span>
+		</h1>
+		<p class="mx-auto mt-5 max-w-2xl text-lg text-[#5C4F3D]">
+			Enter your height and weight to get your Body Mass Index, WHO
+			category, and a visual gauge &mdash; calculated entirely in your
+			browser.
+		</p>
+	</section>
+
+	<section class="mx-auto mt-10 max-w-2xl">
+		<!-- Inputs -->
+		<div class="rounded-2xl border border-[#E8DFC8] bg-white p-6 shadow-sm">
+			<div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+				<!-- Height -->
+				<div>
+					<div class="flex items-center justify-between">
+						<label class="block text-sm font-medium text-[#2B2013]">Height</label>
+						<div
+							class="inline-flex rounded-lg border border-[#E8DFC8] bg-white p-0.5 text-xs font-semibold"
+							role="group"
+							aria-label="Height unit"
+						>
+							<button
+								type="button"
+								id="height-unit-cm"
+								class="rounded-md px-2.5 py-1 transition"
+								aria-pressed="true"
+							>
+								cm
+							</button>
+							<button
+								type="button"
+								id="height-unit-ft"
+								class="rounded-md px-2.5 py-1 transition"
+								aria-pressed="false"
+							>
+								ft/in
+							</button>
+						</div>
+					</div>
+
+					<!-- cm input -->
+					<div id="height-cm-fields" class="mt-2">
+						<div class="relative">
+							<input
+								id="height-cm"
+								type="number"
+								inputmode="decimal"
+								min="0"
+								step="0.1"
+								placeholder="170"
+								class="w-full rounded-lg border border-[#E8DFC8] bg-white px-3 py-2 pr-12 text-sm text-[#2B2013] focus:border-[#C9982E] focus:outline-none focus:ring-1 focus:ring-[#C9982E]"
+							/>
+							<span
+								class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-xs font-medium text-[#8A7D66]"
+							>
+								cm
+							</span>
+						</div>
+					</div>
+
+					<!-- ft/in input -->
+					<div id="height-ft-fields" class="mt-2 hidden grid-cols-2 gap-2">
+						<div class="relative">
+							<input
+								id="height-ft"
+								type="number"
+								inputmode="decimal"
+								min="0"
+								step="1"
+								placeholder="5"
+								class="w-full rounded-lg border border-[#E8DFC8] bg-white px-3 py-2 pr-9 text-sm text-[#2B2013] focus:border-[#C9982E] focus:outline-none focus:ring-1 focus:ring-[#C9982E]"
+							/>
+							<span
+								class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-xs font-medium text-[#8A7D66]"
+							>
+								ft
+							</span>
+						</div>
+						<div class="relative">
+							<input
+								id="height-in"
+								type="number"
+								inputmode="decimal"
+								min="0"
+								step="0.1"
+								placeholder="7"
+								class="w-full rounded-lg border border-[#E8DFC8] bg-white px-3 py-2 pr-9 text-sm text-[#2B2013] focus:border-[#C9982E] focus:outline-none focus:ring-1 focus:ring-[#C9982E]"
+							/>
+							<span
+								class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-xs font-medium text-[#8A7D66]"
+							>
+								in
+							</span>
+						</div>
+					</div>
+				</div>
+
+				<!-- Weight -->
+				<div>
+					<div class="flex items-center justify-between">
+						<label class="block text-sm font-medium text-[#2B2013]">Weight</label>
+						<div
+							class="inline-flex rounded-lg border border-[#E8DFC8] bg-white p-0.5 text-xs font-semibold"
+							role="group"
+							aria-label="Weight unit"
+						>
+							<button
+								type="button"
+								id="weight-unit-kg"
+								class="rounded-md px-2.5 py-1 transition"
+								aria-pressed="true"
+							>
+								kg
+							</button>
+							<button
+								type="button"
+								id="weight-unit-lb"
+								class="rounded-md px-2.5 py-1 transition"
+								aria-pressed="false"
+							>
+								lb
+							</button>
+						</div>
+					</div>
+
+					<div class="mt-2">
+						<div class="relative">
+							<input
+								id="weight-input"
+								type="number"
+								inputmode="decimal"
+								min="0"
+								step="0.1"
+								placeholder="65"
+								class="w-full rounded-lg border border-[#E8DFC8] bg-white px-3 py-2 pr-9 text-sm text-[#2B2013] focus:border-[#C9982E] focus:outline-none focus:ring-1 focus:ring-[#C9982E]"
+							/>
+							<span
+								id="weight-unit-suffix"
+								class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-xs font-medium text-[#8A7D66]"
+							>
+								kg
+							</span>
+						</div>
+					</div>
+
+					<!-- Spacer to align with height's second row on desktop -->
+					<div class="mt-2 hidden sm:block sm:h-[42px]"></div>
+				</div>
+			</div>
+		</div>
+
+		<button
+			id="calculate-btn"
+			class="mt-6 w-full rounded-xl bg-[#C9982E] px-6 py-3 font-semibold text-white transition hover:bg-[#B8860B]"
+		>
+			Calculate BMI
+		</button>
+
+		<p id="error-message" class="mt-3 hidden text-center text-sm font-medium text-red-600">
+			Please enter a valid height and weight.
+		</p>
+
+		<!-- Result -->
+		<div id="result-card" class="mt-8 hidden rounded-2xl border border-[#E8DFC8] bg-white p-6 shadow-sm">
+			<div class="text-center">
+				<p class="text-xs font-medium tracking-wide text-[#8A7D66] uppercase">Your BMI</p>
+				<p id="result-bmi" class="mt-2 font-[Fraunces] text-4xl font-semibold tracking-tight text-[#2B2013]"></p>
+				<p id="result-category" class="mt-1 text-lg font-semibold"></p>
+			</div>
+
+			<!-- Gauge -->
+			<div class="mt-6">
+				<div class="relative h-3 w-full overflow-hidden rounded-full">
+					<div class="flex h-full w-full">
+						<div class="h-full bg-sky-400" style="width: 18.5%"></div>
+						<div class="h-full bg-emerald-500" style="width: 21.5%"></div>
+						<div class="h-full bg-amber-400" style="width: 15%"></div>
+						<div class="h-full bg-red-500" style="width: 45%"></div>
+					</div>
+					<div
+						id="gauge-marker"
+						class="absolute top-1/2 h-5 w-1.5 -translate-y-1/2 -translate-x-1/2 rounded-full bg-[#2B2013] shadow-[0_0_0_2px_white]"
+						style="left: 0%"
+					>
+					</div>
+				</div>
+				<div class="mt-2 flex justify-between text-[11px] font-medium text-[#8A7D66]">
+					<span>0</span>
+					<span>18.5</span>
+					<span>25</span>
+					<span>30</span>
+					<span>40+</span>
+				</div>
+				<div class="mt-3 grid grid-cols-4 gap-2 text-center text-[11px] font-medium text-[#8A7D66]">
+					<span>Underweight</span>
+					<span>Normal</span>
+					<span>Overweight</span>
+					<span>Obese</span>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Explainer -->
+	<section class="mx-auto mt-16 max-w-2xl text-sm leading-relaxed text-[#5C4F3D]">
+		<h2 class="text-lg font-semibold text-[#2B2013]">What is BMI?</h2>
+		<p class="mt-3">
+			Body Mass Index (BMI) is a simple screening measure calculated from your
+			height and weight:
+			<strong class="text-[#2B2013]">weight (kg) &divide; height (m)&sup2;</strong>.
+			It's used by health organizations like the
+			<strong class="text-[#2B2013]">World Health Organization (WHO)</strong> as a
+			quick, population-level way to flag whether someone's weight might fall
+			into an underweight, normal, overweight, or obese range, using the
+			standard cutoffs of
+			<strong class="text-[#2B2013]">18.5, 25, and 30</strong>.
+		</p>
+
+		<h2 class="mt-8 text-lg font-semibold text-[#2B2013]">Limitations to keep in mind</h2>
+		<p class="mt-3">
+			BMI does not distinguish between muscle and fat, so muscular or
+			athletic people can register as "overweight" despite having low body
+			fat. It also doesn't account for age, sex, bone density, or where fat
+			is distributed on the body &mdash; factors that matter for actual
+			health risk. BMI is a useful, free, one-minute starting point, not a
+			diagnosis. Talk to a doctor or healthcare provider for a full
+			assessment of your health.
+		</p>
+		<p class="mt-4 text-xs text-[#8A7D66]">
+			This calculator runs entirely in your browser. Nothing you enter is sent
+			anywhere.
+		</p>
+	</section>
+
+	<section class="mx-auto mt-16 max-w-2xl text-center">
+		<div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm font-medium text-[#5C4F3D]">
+			<a href={`${base}about`} class="hover:text-[#B8860B]">About VitalCalc</a>
+			<a href={`${base}faq`} class="hover:text-[#B8860B]">Frequently Asked Questions</a>
+			<a href={`${base}privacy`} class="hover:text-[#B8860B]">Privacy Policy</a>
+		</div>
+	</section>
+
+	<script>
+		function escapeHtml(str: string): string {
+			return str
+				.replace(/&/g, '&amp;')
+				.replace(/</g, '&lt;')
+				.replace(/>/g, '&gt;')
+				.replace(/"/g, '&quot;')
+				.replace(/'/g, '&#39;');
+		}
+
+		type HeightUnit = 'cm' | 'ft';
+		type WeightUnit = 'kg' | 'lb';
+
+		const heightUnitCmBtn = document.getElementById('height-unit-cm') as HTMLButtonElement;
+		const heightUnitFtBtn = document.getElementById('height-unit-ft') as HTMLButtonElement;
+		const heightCmFields = document.getElementById('height-cm-fields') as HTMLDivElement;
+		const heightFtFields = document.getElementById('height-ft-fields') as HTMLDivElement;
+		const heightCmInput = document.getElementById('height-cm') as HTMLInputElement;
+		const heightFtInput = document.getElementById('height-ft') as HTMLInputElement;
+		const heightInInput = document.getElementById('height-in') as HTMLInputElement;
+
+		const weightUnitKgBtn = document.getElementById('weight-unit-kg') as HTMLButtonElement;
+		const weightUnitLbBtn = document.getElementById('weight-unit-lb') as HTMLButtonElement;
+		const weightInput = document.getElementById('weight-input') as HTMLInputElement;
+		const weightUnitSuffix = document.getElementById('weight-unit-suffix') as HTMLSpanElement;
+
+		const calculateBtn = document.getElementById('calculate-btn') as HTMLButtonElement;
+		const errorMessage = document.getElementById('error-message') as HTMLParagraphElement;
+		const resultCard = document.getElementById('result-card') as HTMLDivElement;
+		const resultBmi = document.getElementById('result-bmi') as HTMLParagraphElement;
+		const resultCategory = document.getElementById('result-category') as HTMLParagraphElement;
+		const gaugeMarker = document.getElementById('gauge-marker') as HTMLDivElement;
+
+		let heightUnit: HeightUnit = 'cm';
+		let weightUnit: WeightUnit = 'kg';
+
+		const ACTIVE_CLASSES = ['bg-[#C9982E]', 'text-white'];
+		const INACTIVE_CLASSES = ['text-[#5C4F3D]'];
+
+		const setToggleState = (
+			activeBtn: HTMLButtonElement,
+			inactiveBtn: HTMLButtonElement,
+		) => {
+			activeBtn.classList.add(...ACTIVE_CLASSES);
+			activeBtn.classList.remove(...INACTIVE_CLASSES);
+			activeBtn.setAttribute('aria-pressed', 'true');
+
+			inactiveBtn.classList.remove(...ACTIVE_CLASSES);
+			inactiveBtn.classList.add(...INACTIVE_CLASSES);
+			inactiveBtn.setAttribute('aria-pressed', 'false');
+		};
+
+		const setHeightUnit = (unit: HeightUnit) => {
+			heightUnit = unit;
+			if (unit === 'cm') {
+				setToggleState(heightUnitCmBtn, heightUnitFtBtn);
+				heightCmFields.classList.remove('hidden');
+				heightFtFields.classList.add('hidden');
+				heightFtFields.classList.remove('grid');
+			} else {
+				setToggleState(heightUnitFtBtn, heightUnitCmBtn);
+				heightFtFields.classList.remove('hidden');
+				heightFtFields.classList.add('grid');
+				heightCmFields.classList.add('hidden');
+			}
+		};
+
+		const setWeightUnit = (unit: WeightUnit) => {
+			weightUnit = unit;
+			if (unit === 'kg') {
+				setToggleState(weightUnitKgBtn, weightUnitLbBtn);
+				weightUnitSuffix.textContent = 'kg';
+			} else {
+				setToggleState(weightUnitLbBtn, weightUnitKgBtn);
+				weightUnitSuffix.textContent = 'lb';
+			}
+		};
+
+		heightUnitCmBtn.addEventListener('click', () => setHeightUnit('cm'));
+		heightUnitFtBtn.addEventListener('click', () => setHeightUnit('ft'));
+		weightUnitKgBtn.addEventListener('click', () => setWeightUnit('kg'));
+		weightUnitLbBtn.addEventListener('click', () => setWeightUnit('lb'));
+
+		setHeightUnit('cm');
+		setWeightUnit('kg');
+
+		const getHeightInMeters = (): number | null => {
+			if (heightUnit === 'cm') {
+				const cm = parseFloat(heightCmInput.value);
+				if (!isFinite(cm) || cm <= 0) return null;
+				return cm / 100;
+			}
+			const ft = parseFloat(heightFtInput.value) || 0;
+			const inches = parseFloat(heightInInput.value) || 0;
+			const totalInches = ft * 12 + inches;
+			if (!isFinite(totalInches) || totalInches <= 0) return null;
+			return totalInches * 0.0254;
+		};
+
+		const getWeightInKg = (): number | null => {
+			const raw = parseFloat(weightInput.value);
+			if (!isFinite(raw) || raw <= 0) return null;
+			return weightUnit === 'kg' ? raw : raw * 0.45359237;
+		};
+
+		const CATEGORIES = [
+			{ max: 18.5, label: 'Underweight', textClass: 'text-sky-500' },
+			{ max: 25, label: 'Normal weight', textClass: 'text-emerald-600' },
+			{ max: 30, label: 'Overweight', textClass: 'text-amber-500' },
+			{ max: Infinity, label: 'Obese', textClass: 'text-red-600' },
+		];
+
+		const getCategory = (bmi: number) => {
+			return CATEGORIES.find((c) => bmi < c.max) ?? CATEGORIES[CATEGORIES.length - 1];
+		};
+
+		// Gauge scale: 0 -> 0%, 40+ -> 100%, clamped.
+		const GAUGE_MAX = 40;
+		const bmiToGaugePercent = (bmi: number): number => {
+			const clamped = Math.max(0, Math.min(bmi, GAUGE_MAX));
+			return (clamped / GAUGE_MAX) * 100;
+		};
+
+		const calculate = () => {
+			const heightM = getHeightInMeters();
+			const weightKg = getWeightInKg();
+
+			if (heightM === null || weightKg === null) {
+				errorMessage.classList.remove('hidden');
+				resultCard.classList.add('hidden');
+				return;
+			}
+
+			errorMessage.classList.add('hidden');
+
+			const bmi = weightKg / (heightM * heightM);
+			const category = getCategory(bmi);
+
+			// BMI value/category are computer-generated numbers, not raw user
+			// input, but routed through escapeHtml + textContent as the
+			// canonical defense-in-depth pattern for this tool family.
+			resultBmi.textContent = escapeHtml(bmi.toFixed(1));
+			resultCategory.textContent = escapeHtml(category.label);
+			resultCategory.className = `mt-1 text-lg font-semibold ${category.textClass}`;
+
+			gaugeMarker.style.left = `${bmiToGaugePercent(bmi)}%`;
+
+			resultCard.classList.remove('hidden');
+		};
+
+		calculateBtn.addEventListener('click', calculate);
+
+		[heightCmInput, heightFtInput, heightInInput, weightInput].forEach((input) => {
+			input.addEventListener('keydown', (e) => {
+				if (e.key === 'Enter') calculate();
+			});
+		});
+	</script>
+</Layout>

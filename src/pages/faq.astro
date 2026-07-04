@@ -1,0 +1,44 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const faqs = [
+	{
+		q: 'Is VitalCalc really free?',
+		a: 'Yes. Every calculation runs on your own device, so there is no server cost per use and no reason to charge or limit usage.',
+	},
+	{
+		q: 'Is my height and weight uploaded anywhere?',
+		a: 'No. Everything is calculated locally in your browser using JavaScript. Your data never leaves your device.',
+	},
+	{
+		q: 'How is BMI calculated?',
+		a: 'BMI = weight (kg) ÷ height (m)². VitalCalc accepts either metric (cm, kg) or imperial (ft/in, lb) units and converts automatically.',
+	},
+	{
+		q: 'What do the BMI categories mean?',
+		a: 'VitalCalc uses the standard World Health Organization cutoffs: under 18.5 is Underweight, 18.5–24.9 is Normal weight, 25–29.9 is Overweight, and 30+ is Obese.',
+	},
+	{
+		q: 'Is BMI a perfect measure of health?',
+		a: 'No. BMI does not distinguish between muscle and fat, and does not account for age, sex, bone density, or fat distribution. It is a useful starting point, not a diagnosis — talk to a doctor for a full assessment.',
+	},
+];
+---
+
+<Layout
+	title="FAQ — VitalCalc"
+	description="Frequently asked questions about VitalCalc's free, private, browser-based BMI calculator."
+	canonicalPath="/faq"
+>
+	<h1 class="text-3xl font-semibold text-[#2B2013]">Frequently Asked Questions</h1>
+	<div class="mt-8 space-y-8">
+		{
+			faqs.map((item) => (
+				<div>
+					<h2 class="text-lg font-semibold text-[#2B2013]">{item.q}</h2>
+					<p class="mt-2 text-[#5C4F3D]">{item.a}</p>
+				</div>
+			))
+		}
+	</div>
+</Layout>
