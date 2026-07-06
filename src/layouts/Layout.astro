@@ -34,37 +34,96 @@ const canonical = new URL(base + canonicalPath.replace(/^\/+/, ''), siteUrl).toS
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
-			href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600;700&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Manrope:wght@400;500;600;700;800&display=swap"
 			rel="stylesheet"
 		/>
 	</head>
-	<body class="min-h-screen bg-[#FAF6EC] text-[#5C4F3D] antialiased">
-		<header class="border-b border-[#E8DFC8]">
-			<nav class="mx-auto flex max-w-4xl items-center justify-between px-6 py-5">
-				<a href={base} class="font-[Fraunces] text-xl font-semibold tracking-tight text-[#2B2013]">
+	<body class="min-h-screen bg-white text-[#4a4234] antialiased">
+		<header class="border-b border-[#eae4d6]">
+			<nav class="mx-auto flex max-w-[820px] items-center justify-between px-6 py-6">
+				<a
+					href={base}
+					class="flex items-center gap-2.5 font-[Sora] text-xl font-extrabold tracking-tight text-[#221b10]"
+				>
+					<span
+						class="flex h-8 w-8 items-center justify-center rounded-lg bg-[#c9982e] text-sm font-extrabold text-white"
+						aria-hidden="true"
+					>
+						V
+					</span>
 					VitalCalc
 				</a>
-				<span class="hidden text-xs font-medium uppercase tracking-wide text-[#C9982E] sm:inline">
+				<span class="hidden text-[15px] font-semibold text-[#8a7e68] sm:inline">
 					BMI &amp; health gauge
 				</span>
 			</nav>
 		</header>
-		<main class="mx-auto max-w-4xl px-6 py-14">
-			<slot />
-		</main>
-		<footer class="mt-24 border-t border-[#E8DFC8]">
-			<div class="mx-auto max-w-4xl px-6 py-10 text-sm text-[#5C4F3D]">
+
+		<!-- Top leaderboard ad slot (invisible until a real <ins> is dropped in) -->
+		<div
+			class="ad-slot ad-leaderboard mx-auto"
+			data-ad-slot="leaderboard"
+			style="max-width:970px;min-height:0"
+		>
+			<!-- AdSense: paste responsive <ins class="adsbygoogle"> here -->
+		</div>
+
+		<!-- Page shell: [left skyscraper][820px main][right skyscraper] -->
+		<div class="mx-auto flex w-full max-w-[1320px] items-start justify-center gap-6 px-6">
+			<!-- Left skyscraper ad slot: only >=1280px, sits in the empty gutter -->
+			<aside
+				class="ad-slot ad-skyscraper hidden shrink-0 xl:block"
+				data-ad-slot="skyscraper-left"
+				style="position:sticky;top:120px;width:160px;min-height:0"
+				aria-hidden="true"
+			>
+				<!-- AdSense: paste responsive <ins class="adsbygoogle"> here -->
+			</aside>
+
+			<main class="mx-auto w-full max-w-[820px] px-0 pt-24 pb-28">
+				<slot />
+
+				<!-- Bottom in-article ad slot (invisible until a real <ins> is dropped in) -->
+				<div
+					class="ad-slot ad-in-article mx-auto mt-16"
+					data-ad-slot="in-article"
+					style="max-width:728px;min-height:0"
+				>
+					<!-- AdSense: paste responsive <ins class="adsbygoogle"> here -->
+				</div>
+			</main>
+
+			<!-- Right skyscraper ad slot: only >=1280px, sits in the empty gutter -->
+			<aside
+				class="ad-slot ad-skyscraper hidden shrink-0 xl:block"
+				data-ad-slot="skyscraper-right"
+				style="position:sticky;top:120px;width:160px;min-height:0"
+				aria-hidden="true"
+			>
+				<!-- AdSense: paste responsive <ins class="adsbygoogle"> here -->
+			</aside>
+		</div>
+
+		<footer class="mt-8 border-t border-[#eae4d6]">
+			<div class="mx-auto max-w-[820px] px-6 py-12 text-[15px] text-[#4a4234]">
 				<p>
 					Every calculation runs locally in your browser. Nothing you enter
 					is ever sent to a server.
 				</p>
-				<div class="mt-4 flex gap-6">
-					<a href={`${base}about`} class="hover:text-[#B8860B]">About</a>
-					<a href={`${base}privacy`} class="hover:text-[#B8860B]">Privacy Policy</a>
-					<a href={`${base}faq`} class="hover:text-[#B8860B]">FAQ</a>
+				<div class="mt-5 flex gap-7 font-semibold">
+					<a href={`${base}about`} class="transition hover:text-[#b8860b]">About</a>
+					<a href={`${base}privacy`} class="transition hover:text-[#b8860b]">Privacy Policy</a>
+					<a href={`${base}faq`} class="transition hover:text-[#b8860b]">FAQ</a>
 				</div>
-				<p class="mt-4 text-[#8A7D66]">&copy; {new Date().getFullYear()} VitalCalc</p>
+				<p class="mt-5 text-[#8a7e68]">&copy; {new Date().getFullYear()} VitalCalc</p>
 			</div>
 		</footer>
+
+		<style>
+			/* Ad slots take no space and show no border/label until a real ad fills them. */
+			.ad-slot:empty {
+				min-height: 0 !important;
+			}
+		</style>
 	</body>
 </html>

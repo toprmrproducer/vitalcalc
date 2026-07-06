@@ -4,39 +4,39 @@ const base = import.meta.env.BASE_URL.replace(/\/+$/, '') + '/';
 ---
 
 <Layout
-	title="VitalCalc — Free BMI Calculator with WHO Category & Visual Gauge"
-	description="Free BMI calculator with metric and imperial units. Instantly get your Body Mass Index, WHO category, and a visual gauge — no signup, 100% client-side."
+	title="VitalCalc — Free BMI Calculator with Ideal Weight Range & WHO Category"
+	description="Free BMI calculator with metric and imperial units. Instantly get your Body Mass Index, WHO category, ideal healthy weight range, and BMI Prime — no signup, 100% client-side."
 	canonicalPath="/"
 >
 	<section class="text-center">
-		<h1 class="text-4xl font-semibold tracking-tight text-[#2B2013] sm:text-5xl">
+		<h1 class="text-4xl font-extrabold tracking-tight text-[#221b10] sm:text-5xl">
 			Know your BMI.
-			<span class="block text-[#C9982E]">Instantly, for free.</span>
+			<span class="mt-1 block text-[#c9982e]">Instantly, for free.</span>
 		</h1>
-		<p class="mx-auto mt-5 max-w-2xl text-lg text-[#5C4F3D]">
+		<p class="mx-auto mt-6 max-w-2xl text-[18px] text-[#4a4234]">
 			Enter your height and weight to get your Body Mass Index, WHO
-			category, and a visual gauge &mdash; calculated entirely in your
-			browser.
+			category, your ideal healthy weight range, and BMI Prime &mdash;
+			calculated entirely in your browser.
 		</p>
 	</section>
 
-	<section class="mx-auto mt-10 max-w-2xl">
+	<section class="mx-auto mt-12 max-w-2xl">
 		<!-- Inputs -->
-		<div class="rounded-2xl border border-[#E8DFC8] bg-white p-6 shadow-sm">
-			<div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+		<div class="rounded-2xl border border-[#eae4d6] bg-[#faf8f3] p-7 shadow-sm">
+			<div class="grid grid-cols-1 gap-7 sm:grid-cols-2">
 				<!-- Height -->
 				<div>
 					<div class="flex items-center justify-between">
-						<label class="block text-sm font-medium text-[#2B2013]">Height</label>
+						<label class="block text-[15px] font-semibold text-[#221b10]">Height</label>
 						<div
-							class="inline-flex rounded-lg border border-[#E8DFC8] bg-white p-0.5 text-xs font-semibold"
+							class="inline-flex rounded-lg border border-[#eae4d6] bg-white p-0.5 text-[13px] font-semibold"
 							role="group"
 							aria-label="Height unit"
 						>
 							<button
 								type="button"
 								id="height-unit-cm"
-								class="rounded-md px-2.5 py-1 transition"
+								class="rounded-md px-3 py-1.5 transition"
 								aria-pressed="true"
 							>
 								cm
@@ -44,7 +44,7 @@ const base = import.meta.env.BASE_URL.replace(/\/+$/, '') + '/';
 							<button
 								type="button"
 								id="height-unit-ft"
-								class="rounded-md px-2.5 py-1 transition"
+								class="rounded-md px-3 py-1.5 transition"
 								aria-pressed="false"
 							>
 								ft/in
@@ -53,7 +53,7 @@ const base = import.meta.env.BASE_URL.replace(/\/+$/, '') + '/';
 					</div>
 
 					<!-- cm input -->
-					<div id="height-cm-fields" class="mt-2">
+					<div id="height-cm-fields" class="mt-3">
 						<div class="relative">
 							<input
 								id="height-cm"
@@ -62,10 +62,10 @@ const base = import.meta.env.BASE_URL.replace(/\/+$/, '') + '/';
 								min="0"
 								step="0.1"
 								placeholder="170"
-								class="w-full rounded-lg border border-[#E8DFC8] bg-white px-3 py-2 pr-12 text-sm text-[#2B2013] focus:border-[#C9982E] focus:outline-none focus:ring-1 focus:ring-[#C9982E]"
+								class="w-full rounded-lg border border-[#eae4d6] bg-white px-4 py-2.5 pr-12 text-[15px] text-[#221b10] focus:border-[#c9982e] focus:outline-none focus:ring-1 focus:ring-[#c9982e]"
 							/>
 							<span
-								class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-xs font-medium text-[#8A7D66]"
+								class="pointer-events-none absolute inset-y-0 right-3.5 flex items-center text-[13px] font-medium text-[#8a7e68]"
 							>
 								cm
 							</span>
@@ -73,7 +73,7 @@ const base = import.meta.env.BASE_URL.replace(/\/+$/, '') + '/';
 					</div>
 
 					<!-- ft/in input -->
-					<div id="height-ft-fields" class="mt-2 hidden grid-cols-2 gap-2">
+					<div id="height-ft-fields" class="mt-3 hidden grid-cols-2 gap-2">
 						<div class="relative">
 							<input
 								id="height-ft"
@@ -82,10 +82,10 @@ const base = import.meta.env.BASE_URL.replace(/\/+$/, '') + '/';
 								min="0"
 								step="1"
 								placeholder="5"
-								class="w-full rounded-lg border border-[#E8DFC8] bg-white px-3 py-2 pr-9 text-sm text-[#2B2013] focus:border-[#C9982E] focus:outline-none focus:ring-1 focus:ring-[#C9982E]"
+								class="w-full rounded-lg border border-[#eae4d6] bg-white px-4 py-2.5 pr-9 text-[15px] text-[#221b10] focus:border-[#c9982e] focus:outline-none focus:ring-1 focus:ring-[#c9982e]"
 							/>
 							<span
-								class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-xs font-medium text-[#8A7D66]"
+								class="pointer-events-none absolute inset-y-0 right-3.5 flex items-center text-[13px] font-medium text-[#8a7e68]"
 							>
 								ft
 							</span>
@@ -98,10 +98,10 @@ const base = import.meta.env.BASE_URL.replace(/\/+$/, '') + '/';
 								min="0"
 								step="0.1"
 								placeholder="7"
-								class="w-full rounded-lg border border-[#E8DFC8] bg-white px-3 py-2 pr-9 text-sm text-[#2B2013] focus:border-[#C9982E] focus:outline-none focus:ring-1 focus:ring-[#C9982E]"
+								class="w-full rounded-lg border border-[#eae4d6] bg-white px-4 py-2.5 pr-9 text-[15px] text-[#221b10] focus:border-[#c9982e] focus:outline-none focus:ring-1 focus:ring-[#c9982e]"
 							/>
 							<span
-								class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-xs font-medium text-[#8A7D66]"
+								class="pointer-events-none absolute inset-y-0 right-3.5 flex items-center text-[13px] font-medium text-[#8a7e68]"
 							>
 								in
 							</span>
@@ -112,16 +112,16 @@ const base = import.meta.env.BASE_URL.replace(/\/+$/, '') + '/';
 				<!-- Weight -->
 				<div>
 					<div class="flex items-center justify-between">
-						<label class="block text-sm font-medium text-[#2B2013]">Weight</label>
+						<label class="block text-[15px] font-semibold text-[#221b10]">Weight</label>
 						<div
-							class="inline-flex rounded-lg border border-[#E8DFC8] bg-white p-0.5 text-xs font-semibold"
+							class="inline-flex rounded-lg border border-[#eae4d6] bg-white p-0.5 text-[13px] font-semibold"
 							role="group"
 							aria-label="Weight unit"
 						>
 							<button
 								type="button"
 								id="weight-unit-kg"
-								class="rounded-md px-2.5 py-1 transition"
+								class="rounded-md px-3 py-1.5 transition"
 								aria-pressed="true"
 							>
 								kg
@@ -129,7 +129,7 @@ const base = import.meta.env.BASE_URL.replace(/\/+$/, '') + '/';
 							<button
 								type="button"
 								id="weight-unit-lb"
-								class="rounded-md px-2.5 py-1 transition"
+								class="rounded-md px-3 py-1.5 transition"
 								aria-pressed="false"
 							>
 								lb
@@ -137,7 +137,7 @@ const base = import.meta.env.BASE_URL.replace(/\/+$/, '') + '/';
 						</div>
 					</div>
 
-					<div class="mt-2">
+					<div class="mt-3">
 						<div class="relative">
 							<input
 								id="weight-input"
@@ -146,11 +146,11 @@ const base = import.meta.env.BASE_URL.replace(/\/+$/, '') + '/';
 								min="0"
 								step="0.1"
 								placeholder="65"
-								class="w-full rounded-lg border border-[#E8DFC8] bg-white px-3 py-2 pr-9 text-sm text-[#2B2013] focus:border-[#C9982E] focus:outline-none focus:ring-1 focus:ring-[#C9982E]"
+								class="w-full rounded-lg border border-[#eae4d6] bg-white px-4 py-2.5 pr-9 text-[15px] text-[#221b10] focus:border-[#c9982e] focus:outline-none focus:ring-1 focus:ring-[#c9982e]"
 							/>
 							<span
 								id="weight-unit-suffix"
-								class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-xs font-medium text-[#8A7D66]"
+								class="pointer-events-none absolute inset-y-0 right-3.5 flex items-center text-[13px] font-medium text-[#8a7e68]"
 							>
 								kg
 							</span>
@@ -158,32 +158,32 @@ const base = import.meta.env.BASE_URL.replace(/\/+$/, '') + '/';
 					</div>
 
 					<!-- Spacer to align with height's second row on desktop -->
-					<div class="mt-2 hidden sm:block sm:h-[42px]"></div>
+					<div class="mt-3 hidden sm:block sm:h-[46px]"></div>
 				</div>
 			</div>
 		</div>
 
 		<button
 			id="calculate-btn"
-			class="mt-6 w-full rounded-xl bg-[#C9982E] px-6 py-3 font-semibold text-white transition hover:bg-[#B8860B]"
+			class="mt-6 w-full rounded-xl bg-[#c9982e] px-6 py-3.5 text-[16px] font-bold text-white transition hover:bg-[#b8860b]"
 		>
 			Calculate BMI
 		</button>
 
-		<p id="error-message" class="mt-3 hidden text-center text-sm font-medium text-red-600">
+		<p id="error-message" class="mt-3 hidden text-center text-[15px] font-semibold text-red-600">
 			Please enter a valid height and weight.
 		</p>
 
 		<!-- Result -->
-		<div id="result-card" class="mt-8 hidden rounded-2xl border border-[#E8DFC8] bg-white p-6 shadow-sm">
+		<div id="result-card" class="mt-8 hidden rounded-2xl border border-[#eae4d6] bg-[#faf8f3] p-7 shadow-sm">
 			<div class="text-center">
-				<p class="text-xs font-medium tracking-wide text-[#8A7D66] uppercase">Your BMI</p>
-				<p id="result-bmi" class="mt-2 font-[Fraunces] text-4xl font-semibold tracking-tight text-[#2B2013]"></p>
-				<p id="result-category" class="mt-1 text-lg font-semibold"></p>
+				<p class="text-[13px] font-semibold tracking-wide text-[#8a7e68] uppercase">Your BMI</p>
+				<p id="result-bmi" class="mt-2 font-[Sora] text-5xl font-extrabold tracking-tight text-[#221b10]"></p>
+				<p id="result-category" class="mt-1 text-lg font-bold"></p>
 			</div>
 
 			<!-- Gauge -->
-			<div class="mt-6">
+			<div class="mt-7">
 				<div class="relative h-3 w-full overflow-hidden rounded-full">
 					<div class="flex h-full w-full">
 						<div class="h-full bg-sky-400" style="width: 18.5%"></div>
@@ -193,44 +193,76 @@ const base = import.meta.env.BASE_URL.replace(/\/+$/, '') + '/';
 					</div>
 					<div
 						id="gauge-marker"
-						class="absolute top-1/2 h-5 w-1.5 -translate-y-1/2 -translate-x-1/2 rounded-full bg-[#2B2013] shadow-[0_0_0_2px_white]"
+						class="absolute top-1/2 h-5 w-1.5 -translate-y-1/2 -translate-x-1/2 rounded-full bg-[#221b10] shadow-[0_0_0_2px_white]"
 						style="left: 0%"
 					>
 					</div>
 				</div>
-				<div class="mt-2 flex justify-between text-[11px] font-medium text-[#8A7D66]">
+				<div class="mt-2 flex justify-between text-[11px] font-medium text-[#8a7e68]">
 					<span>0</span>
 					<span>18.5</span>
 					<span>25</span>
 					<span>30</span>
 					<span>40+</span>
 				</div>
-				<div class="mt-3 grid grid-cols-4 gap-2 text-center text-[11px] font-medium text-[#8A7D66]">
+				<div class="mt-3 grid grid-cols-4 gap-2 text-center text-[11px] font-medium text-[#8a7e68]">
 					<span>Underweight</span>
 					<span>Normal</span>
 					<span>Overweight</span>
 					<span>Obese</span>
 				</div>
 			</div>
+
+			<!-- Niche feature: Ideal weight range + BMI Prime -->
+			<div class="mt-7 grid grid-cols-1 gap-4 border-t border-[#eae4d6] pt-6 sm:grid-cols-2">
+				<div class="rounded-xl border border-[#eae4d6] bg-white p-5 text-center">
+					<p class="text-[13px] font-semibold tracking-wide text-[#8a7e68] uppercase">
+						Ideal weight range
+					</p>
+					<p id="result-ideal-range" class="mt-2 font-[Sora] text-xl font-bold text-[#221b10]"></p>
+					<p class="mt-1 text-[13px] text-[#8a7e68]">
+						Healthy BMI 18.5&ndash;24.9 for your height
+					</p>
+				</div>
+				<div class="rounded-xl border border-[#eae4d6] bg-white p-5 text-center">
+					<p class="text-[13px] font-semibold tracking-wide text-[#8a7e68] uppercase">
+						BMI Prime
+					</p>
+					<p id="result-bmi-prime" class="mt-2 font-[Sora] text-xl font-bold text-[#221b10]"></p>
+					<p id="result-bmi-prime-note" class="mt-1 text-[13px] text-[#8a7e68]"></p>
+				</div>
+			</div>
 		</div>
 	</section>
 
 	<!-- Explainer -->
-	<section class="mx-auto mt-16 max-w-2xl text-sm leading-relaxed text-[#5C4F3D]">
-		<h2 class="text-lg font-semibold text-[#2B2013]">What is BMI?</h2>
+	<section class="mx-auto mt-16 max-w-2xl text-[16px] leading-relaxed text-[#4a4234]">
+		<h2 class="text-xl font-bold text-[#221b10]">What is BMI?</h2>
 		<p class="mt-3">
 			Body Mass Index (BMI) is a simple screening measure calculated from your
 			height and weight:
-			<strong class="text-[#2B2013]">weight (kg) &divide; height (m)&sup2;</strong>.
+			<strong class="text-[#221b10]">weight (kg) &divide; height (m)&sup2;</strong>.
 			It's used by health organizations like the
-			<strong class="text-[#2B2013]">World Health Organization (WHO)</strong> as a
+			<strong class="text-[#221b10]">World Health Organization (WHO)</strong> as a
 			quick, population-level way to flag whether someone's weight might fall
 			into an underweight, normal, overweight, or obese range, using the
 			standard cutoffs of
-			<strong class="text-[#2B2013]">18.5, 25, and 30</strong>.
+			<strong class="text-[#221b10]">18.5, 25, and 30</strong>.
 		</p>
 
-		<h2 class="mt-8 text-lg font-semibold text-[#2B2013]">Limitations to keep in mind</h2>
+		<h2 class="mt-8 text-xl font-bold text-[#221b10]">Ideal weight range &amp; BMI Prime</h2>
+		<p class="mt-3">
+			Your <strong class="text-[#221b10]">ideal weight range</strong> is the
+			span of weights that would place your BMI in the healthy
+			18.5&ndash;24.9 band for your exact height. <strong class="text-[#221b10]">BMI
+			Prime</strong> is your BMI divided by 25 (the upper limit of a normal
+			BMI): a value of 1.0 sits right at that ceiling, below 1.0 is within the
+			healthy-to-underweight range, and above 1.0 means you're over the WHO
+			normal cutoff. It's a single ratio that shows at a glance how far you are
+			from the top of the healthy range.
+		</p>
+
+		<h2 class="mt-8 text-xl font-bold text-[#221b10]">Limitations to keep in mind</h2>
 		<p class="mt-3">
 			BMI does not distinguish between muscle and fat, so muscular or
 			athletic people can register as "overweight" despite having low body
@@ -240,17 +272,32 @@ const base = import.meta.env.BASE_URL.replace(/\/+$/, '') + '/';
 			diagnosis. Talk to a doctor or healthcare provider for a full
 			assessment of your health.
 		</p>
-		<p class="mt-4 text-xs text-[#8A7D66]">
+		<p class="mt-4 text-[13px] text-[#8a7e68]">
 			This calculator runs entirely in your browser. Nothing you enter is sent
 			anywhere.
 		</p>
 	</section>
 
+	<!-- Snake boredom-filler -->
+	<section class="mx-auto mt-14 max-w-[820px]">
+		<details class="rounded-2xl border border-[#eae4d6] bg-[#faf8f3] p-5">
+			<summary class="cursor-pointer select-none font-[Sora] text-lg font-bold text-[#221b10]">Bored? Play a quick game of Snake</summary>
+			<div class="mt-4 flex flex-col items-center gap-3">
+				<canvas id="snake-canvas" width="320" height="320" class="rounded-lg border border-[#eae4d6] bg-white" style="touch-action:none"></canvas>
+				<div class="flex items-center gap-4 text-sm text-[#4a4234]">
+					<span>Score: <b id="snake-score">0</b></span>
+					<button id="snake-restart" class="rounded-lg bg-[#c9982e] px-4 py-2 font-semibold text-white transition hover:bg-[#b8860b]">Restart</button>
+				</div>
+				<p class="text-xs text-[#8a7e68]">Arrow keys / WASD, or swipe on mobile.</p>
+			</div>
+		</details>
+	</section>
+
 	<section class="mx-auto mt-16 max-w-2xl text-center">
-		<div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm font-medium text-[#5C4F3D]">
-			<a href={`${base}about`} class="hover:text-[#B8860B]">About VitalCalc</a>
-			<a href={`${base}faq`} class="hover:text-[#B8860B]">Frequently Asked Questions</a>
-			<a href={`${base}privacy`} class="hover:text-[#B8860B]">Privacy Policy</a>
+		<div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-[15px] font-semibold text-[#4a4234]">
+			<a href={`${base}about`} class="transition hover:text-[#b8860b]">About VitalCalc</a>
+			<a href={`${base}faq`} class="transition hover:text-[#b8860b]">Frequently Asked Questions</a>
+			<a href={`${base}privacy`} class="transition hover:text-[#b8860b]">Privacy Policy</a>
 		</div>
 	</section>
 
@@ -286,12 +333,15 @@ const base = import.meta.env.BASE_URL.replace(/\/+$/, '') + '/';
 		const resultBmi = document.getElementById('result-bmi') as HTMLParagraphElement;
 		const resultCategory = document.getElementById('result-category') as HTMLParagraphElement;
 		const gaugeMarker = document.getElementById('gauge-marker') as HTMLDivElement;
+		const resultIdealRange = document.getElementById('result-ideal-range') as HTMLParagraphElement;
+		const resultBmiPrime = document.getElementById('result-bmi-prime') as HTMLParagraphElement;
+		const resultBmiPrimeNote = document.getElementById('result-bmi-prime-note') as HTMLParagraphElement;
 
 		let heightUnit: HeightUnit = 'cm';
 		let weightUnit: WeightUnit = 'kg';
 
-		const ACTIVE_CLASSES = ['bg-[#C9982E]', 'text-white'];
-		const INACTIVE_CLASSES = ['text-[#5C4F3D]'];
+		const ACTIVE_CLASSES = ['bg-[#c9982e]', 'text-white'];
+		const INACTIVE_CLASSES = ['text-[#4a4234]'];
 
 		const setToggleState = (
 			activeBtn: HTMLButtonElement,
@@ -377,6 +427,15 @@ const base = import.meta.env.BASE_URL.replace(/\/+$/, '') + '/';
 			return (clamped / GAUGE_MAX) * 100;
 		};
 
+		// Healthy BMI band used for ideal-weight-range + BMI Prime.
+		const HEALTHY_BMI_LOW = 18.5;
+		const HEALTHY_BMI_HIGH = 24.9;
+		const BMI_PRIME_DIVISOR = 25;
+
+		// Convert a kg weight back to the currently-selected display unit.
+		const kgToDisplay = (kg: number): number =>
+			weightUnit === 'kg' ? kg : kg / 0.45359237;
+
 		const calculate = () => {
 			const heightM = getHeightInMeters();
 			const weightKg = getWeightInKg();
@@ -397,9 +456,30 @@ const base = import.meta.env.BASE_URL.replace(/\/+$/, '') + '/';
 			// canonical defense-in-depth pattern for this tool family.
 			resultBmi.textContent = escapeHtml(bmi.toFixed(1));
 			resultCategory.textContent = escapeHtml(category.label);
-			resultCategory.className = `mt-1 text-lg font-semibold ${category.textClass}`;
+			resultCategory.className = `mt-1 text-lg font-bold ${category.textClass}`;
 
 			gaugeMarker.style.left = `${bmiToGaugePercent(bmi)}%`;
+
+			// --- Ideal weight range (healthy BMI band mapped back to a weight) ---
+			const idealLowKg = HEALTHY_BMI_LOW * heightM * heightM;
+			const idealHighKg = HEALTHY_BMI_HIGH * heightM * heightM;
+			const unitLabel = weightUnit === 'kg' ? 'kg' : 'lb';
+			const idealLow = kgToDisplay(idealLowKg).toFixed(1);
+			const idealHigh = kgToDisplay(idealHighKg).toFixed(1);
+			resultIdealRange.textContent = escapeHtml(`${idealLow}–${idealHigh} ${unitLabel}`);
+
+			// --- BMI Prime (BMI / 25) ---
+			const bmiPrime = bmi / BMI_PRIME_DIVISOR;
+			resultBmiPrime.textContent = escapeHtml(bmiPrime.toFixed(2));
+			let primeNote: string;
+			if (bmiPrime < 0.74) {
+				primeNote = 'Below the healthy range';
+			} else if (bmiPrime <= 1.0) {
+				primeNote = 'Within the healthy range';
+			} else {
+				primeNote = 'Above the WHO normal cutoff';
+			}
+			resultBmiPrimeNote.textContent = escapeHtml(primeNote);
 
 			resultCard.classList.remove('hidden');
 		};
@@ -411,5 +491,37 @@ const base = import.meta.env.BASE_URL.replace(/\/+$/, '') + '/';
 				if (e.key === 'Enter') calculate();
 			});
 		});
+	</script>
+
+	<script>
+		(() => {
+			const cv = document.getElementById('snake-canvas') as HTMLCanvasElement | null; if (!cv) return;
+			const ctx = cv.getContext('2d')!; const G = 16, N = 20;
+			let snake: {x:number;y:number}[], dir: {x:number;y:number}, food: {x:number;y:number}, score: number, alive: boolean;
+			const scoreEl = document.getElementById('snake-score');
+			function reset(){ snake=[{x:10,y:10}]; dir={x:0,y:0}; food=rndFood(); score=0; alive=true; if(scoreEl)scoreEl.textContent='0'; }
+			function rndFood(){ return {x:Math.floor(Math.random()*N), y:Math.floor(Math.random()*N)}; }
+			function step(){
+				if(!alive) return;
+				if(dir.x===0&&dir.y===0){ draw(); return; }
+				const h={x:snake[0].x+dir.x, y:snake[0].y+dir.y};
+				if(h.x<0||h.y<0||h.x>=N||h.y>=N||snake.some(s=>s.x===h.x&&s.y===h.y)){ alive=false; draw(); return; }
+				snake.unshift(h);
+				if(h.x===food.x&&h.y===food.y){ score++; if(scoreEl)scoreEl.textContent=String(score); food=rndFood(); } else snake.pop();
+				draw();
+			}
+			function draw(){
+				ctx.fillStyle='#ffffff'; ctx.fillRect(0,0,cv.width,cv.height);
+				ctx.fillStyle='#c9982e'; snake.forEach(s=>ctx.fillRect(s.x*G+1,s.y*G+1,G-2,G-2));
+				ctx.fillStyle='#221b10'; ctx.fillRect(food.x*G+3,food.y*G+3,G-6,G-6);
+				if(!alive){ ctx.fillStyle='rgba(34,27,16,0.72)'; ctx.fillRect(0,0,cv.width,cv.height); ctx.fillStyle='#fff'; ctx.font='bold 20px Sora, sans-serif'; ctx.textAlign='center'; ctx.fillText('Game Over — Restart', cv.width/2, cv.height/2); }
+			}
+			function turn(x: number,y: number){ if((x!==0&&dir.x===0)||(y!==0&&dir.y===0)) dir={x,y}; }
+			window.addEventListener('keydown', e=>{ const k=e.key.toLowerCase(); if(['arrowup','w'].includes(k))turn(0,-1); else if(['arrowdown','s'].includes(k))turn(0,1); else if(['arrowleft','a'].includes(k))turn(-1,0); else if(['arrowright','d'].includes(k))turn(1,0); else return; e.preventDefault(); }, {passive:false});
+			let tx: number,ty: number; cv.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;ty=e.touches[0].clientY;},{passive:true});
+			cv.addEventListener('touchend',e=>{ const dx=e.changedTouches[0].clientX-tx, dy=e.changedTouches[0].clientY-ty; if(Math.abs(dx)>Math.abs(dy)) turn(dx>0?1:-1,0); else turn(0,dy>0?1:-1); },{passive:true});
+			document.getElementById('snake-restart')?.addEventListener('click', reset);
+			reset(); setInterval(step, 110);
+		})();
 	</script>
 </Layout>
